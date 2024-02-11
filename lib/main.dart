@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:todo_apps_with_firebase/auth_screen/auth_page.dart';
 import 'package:todo_apps_with_firebase/auth_screen/logIn.dart';
 import 'package:todo_apps_with_firebase/data/main_page.dart';
+import 'package:todo_apps_with_firebase/screen/home.dart';
 import 'package:todo_apps_with_firebase/style.dart';
 
 import 'firebase_options.dart';
@@ -40,7 +41,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: MainPage(),
+      home: HomeScreen(),
     );
   }
 }

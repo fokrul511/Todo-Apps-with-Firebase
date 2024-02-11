@@ -38,6 +38,7 @@ dependencies:
   firebase_auth:
   cloud_firestore:
   firebase_core:
+  msh_checkbox:
 
 dev_dependencies:
   flutter_test:
