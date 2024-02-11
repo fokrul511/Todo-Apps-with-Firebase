@@ -1,23 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:todo_apps_with_firebase/auth_screen/sing_up.dart';
+import 'package:todo_apps_with_firebase/auth_screen/logIn.dart';
 import 'package:todo_apps_with_firebase/data/firebase_auth.dart';
 import 'package:todo_apps_with_firebase/style.dart';
 
-class LogInScreen extends StatefulWidget {
+class SingUpScreen extends StatefulWidget {
   final VoidCallback show;
 
-  LogInScreen(this.show, {super.key});
+  SingUpScreen(this.show, {super.key});
 
   @override
-  State<LogInScreen> createState() => _LogInScreenState();
+  State<SingUpScreen> createState() => _SingUpScreenState();
 }
 
-class _LogInScreenState extends State<LogInScreen> {
+class _SingUpScreenState extends State<SingUpScreen> {
   FocusNode _focusNode1 = FocusNode();
   FocusNode _focusNode2 = FocusNode();
+  FocusNode _focusNode3 = FocusNode();
 
   final TextEditingController emailTEController = TextEditingController();
   final TextEditingController passwordTEController = TextEditingController();
+  final TextEditingController passwordConfromTEController =
+      TextEditingController();
 
   @override
   void initState() {
@@ -26,6 +29,9 @@ class _LogInScreenState extends State<LogInScreen> {
       setState(() {});
     });
     _focusNode2.addListener(() {
+      setState(() {});
+    });
+    _focusNode3.addListener(() {
       setState(() {});
     });
   }
@@ -57,16 +63,28 @@ class _LogInScreenState extends State<LogInScreen> {
                 hint: 'password',
               ),
               const SizedBox(height: 10),
+              textFormField(
+                textInputType: TextInputType.text,
+                contoller: passwordConfromTEController,
+                focusNode: _focusNode3,
+                icon: Icons.password,
+                hint: 'Confrom password',
+              ),
+              const SizedBox(height: 10),
               account(),
               const SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15),
                 child: ElevatedButton(
                   onPressed: () {
-                    AuthRemote().login(emailTEController.text, passwordTEController.text);
+                    AuthRemote().register(
+                      emailTEController.text,
+                      passwordTEController.text,
+                      passwordConfromTEController.text,
+                    );
                   },
                   child: Text(
-                    'LogIn',
+                    'SingUp',
                     style: TextStyle(fontSize: 20),
                   ),
                 ),
@@ -85,14 +103,14 @@ class _LogInScreenState extends State<LogInScreen> {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Text(
-            "don't have an account",
+            "have an account",
             style: TextStyle(fontSize: 14, color: Colors.grey.shade700),
           ),
           SizedBox(width: 5),
           InkWell(
             onTap: widget.show,
             child: Text(
-              'Sing Up',
+              'LogIn',
               style: TextStyle(
                 fontSize: 14,
                 color: Colors.blue,
@@ -109,6 +127,7 @@ class _LogInScreenState extends State<LogInScreen> {
       {required TextEditingController contoller,
       required FocusNode focusNode,
       required IconData icon,
+
       required String hint, required TextInputType textInputType}) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15.0),
