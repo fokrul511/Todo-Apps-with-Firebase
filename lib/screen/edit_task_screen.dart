@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:todo_apps_with_firebase/style.dart';
 
-class AddScreen extends StatefulWidget {
-  const AddScreen({super.key});
+class EditScreen extends StatefulWidget {
+  const EditScreen({super.key});
 
   @override
-  State<AddScreen> createState() => _AddScreenState();
+  State<EditScreen> createState() => _EditScreenState();
 }
 
-class _AddScreenState extends State<AddScreen> {
+class _EditScreenState extends State<EditScreen> {
   final TextEditingController title = TextEditingController();
   final TextEditingController discription = TextEditingController();
 
@@ -26,7 +26,7 @@ class _AddScreenState extends State<AddScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const SizedBox(height: 100,),
+                SizedBox(height: 100,),
                 textFormField(
                   contoller: title,
                   hint: 'Title',

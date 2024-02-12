@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_apps_with_firebase/screen/edit_task_screen.dart';
 import 'package:todo_apps_with_firebase/style.dart';
 
 class TaskWidget extends StatefulWidget {
@@ -29,24 +30,24 @@ class _TaskWidgetState extends State<TaskWidget> {
                   color: Colors.grey.withOpacity(0.2),
                   spreadRadius: 7,
                   blurRadius: 5,
-                  offset: Offset(0, 2))
+                  offset: const Offset(0, 2))
             ],
           ),
           child: Row(
             children: [
               imagee(),
-              SizedBox(width: 20),
+              const SizedBox(width: 20),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
+                        const Text(
                           'Title',
                           style: TextStyle(
                             fontSize: 18,
@@ -70,71 +71,16 @@ class _TaskWidgetState extends State<TaskWidget> {
                         fontWeight: FontWeight.w400,
                       ),
                     ),
-                    Spacer(),
+                    const Spacer(),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 10),
                       child: Row(
                         children: [
-                          Container(
-                            width: 90,
-                            height: 28,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(18),
-                              color: custom_green,
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Image.asset(
-                                  "images/icon_time.png",
-                                  height: 15,
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Text(
-                                  'Time',
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(
+                          edit_time(),
+                          const SizedBox(
                             width: 10,
                           ),
-                          Container(
-                            width: 90,
-                            height: 28,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(18),
-                                color: Color(0xffe2f6f1)),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                // Image.asset("images/icon_edit.png",height: 15,),
-                                Icon(
-                                  Icons.edit,
-                                  size: 20,
-                                  color: Colors.green,
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Text(
-                                  'Edit',
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          )
+                          edit()
                         ],
                       ),
                     )
@@ -146,11 +92,82 @@ class _TaskWidgetState extends State<TaskWidget> {
         ));
   }
 
+  GestureDetector edit() {
+    return GestureDetector(
+      onTap: (){
+        Navigator.push(context, MaterialPageRoute(builder: (context) => EditScreen(),));
+      },
+      child: Container(
+        width: 90,
+        height: 28,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(18),
+            color: const Color(0xffe2f6f1)),
+        child: const Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // Image.asset("images/icon_edit.png",height: 15,),
+            Icon(
+              Icons.edit,
+              size: 20,
+              color: Colors.green,
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            Text(
+              'Edit',
+              style: TextStyle(
+                fontSize: 14,
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  GestureDetector edit_time() {
+    return GestureDetector(
+      onTap: (){},
+      child: Container(
+        width: 90,
+        height: 28,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(18),
+          color: custom_green,
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              "images/icon_time.png",
+              height: 15,
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+            const Text(
+              'Time',
+              style: TextStyle(
+                fontSize: 14,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   Widget imagee() {
     return Container(
       height: 130,
       width: 100,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
           color: Colors.white,
           image: DecorationImage(
             image: AssetImage('images/0.png'),

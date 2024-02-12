@@ -158,7 +158,7 @@ class _SingUpScreenState extends State<SingUpScreen> {
         height: 300,
         decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage('images/7.png'), fit: BoxFit.cover),
+              image: AssetImage('images/55.png'), fit: BoxFit.cover),
         ),
       ),
     );

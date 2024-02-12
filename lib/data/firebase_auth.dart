@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:todo_apps_with_firebase/data/auth_data.dart';
 
 abstract class AuthicationDataSoucre {
   Future<void> register(String email, String password, String confromPassword);
@@ -20,7 +21,9 @@ class AuthRemote extends AuthicationDataSoucre {
       String email, String password, String confromPassword) async {
     if (password == confromPassword) {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: email.trim(), password: password.trim());
+          email: email.trim(), password: password.trim()).then((value) {
+            FireStoreDataSource().createUser(email);
+      });
     }
   }
 }

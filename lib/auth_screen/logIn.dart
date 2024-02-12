@@ -139,7 +139,7 @@ class _LogInScreenState extends State<LogInScreen> {
         height: 300,
         decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage('images/7.png'), fit: BoxFit.cover),
+              image: AssetImage('images/5.png'), fit: BoxFit.cover),
         ),
       ),
     );
